@@ -6,7 +6,7 @@ It uses local files and provides a Ruby interface for reading it.
 
 == Usage
 
-uktransport.naptan(filename) => array of bus stops (id, lat, long)
-uktransport.nptd(filename)
-uktransport.nptd.routes => array of bus routes (id, name, stops(one, two, three))
-uktransport.nptd.stops => array of bus stops (id, name, routes(one, two, three))
+  uktransport.naptan(filename) => array of bus stops (id, lat, long)
+  uktransport.nptd(filename)
+  uktransport.nptd.routes => array of bus routes (id, name, stops(one, two, three))
+  uktransport.nptd.stops => array of bus stops (id, name, routes(one, two, three))
