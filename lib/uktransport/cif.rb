@@ -5,6 +5,7 @@ module UKTransport
     @stops = []
     @@service_regex = /^QS([NDR])(.{4})(.{6})(\d{8})(\d{8})([01]{7})([SH ])([ ABX])(.{4})(.{6})(.{8})(.{8})(.)$/
     @@location_regex = /^QL([NDR])(.{12})(.{48})(.)(.)(.{8})/
+    @@origin_regex = /^QO(.{12})(\d{4})(.{3})(T[01])(F[01])/
     attr_accessor :routes, :stops, :cif
     
 	def initialize(filename)
@@ -29,6 +30,11 @@ module UKTransport
 	      route.registration_number = routeline[11].strip
 	      route.direction = routeline[12]
 	      @routes.push(route)
+	    elsif ((line =~ /^Q[OIT]/) == 0)
+	      stopline = line.scan(/^Q[OIT](.{12})/)[0]
+	      stop = UKTransport::Stop.new
+	      stop.location = stopline[0]
+	      @routes.last.stops.push stop
 	    elsif ((line =~ /^QL/) == 0)
 	      stopline = line.scan(@@location_regex)[0]
 	      stop = UKTransport::Stop.new
