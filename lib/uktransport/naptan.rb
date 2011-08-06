@@ -4,6 +4,7 @@ require 'fastercsv'
 module UKTransport
   class Naptan
     include Enumerable
+    extend Forwardable
     attr_accessor :stops, :filename
     
     def initialize(filename)
@@ -12,12 +13,18 @@ module UKTransport
       @stops = FasterCSV.read("/home/kaerast/data/Stops_extract.csv")
     end
     
+    def_delegators :@stops, :<<, :[], :[]=, :last
+    
     def each(&block)
       @stops.each(&block)
     end
     
     def <<(val)
       @stops << val
+    end
+    
+    def all
+      @stops
     end
   end
 end
