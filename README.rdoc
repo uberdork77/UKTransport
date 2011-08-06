@@ -11,6 +11,8 @@ It uses local files and provides a Ruby interface for reading it.
   y.routes => array of bus route objects
   y.routes.first.stops => array of stops a route calls at, in order
   y.stops => array of bus stop objects
+  
+See also the documentation at http://rubydoc.info/github/computergentle/UKTransport/master/frames
 
 == Data formats
 
