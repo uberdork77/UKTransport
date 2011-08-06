@@ -10,7 +10,7 @@ module UKTransport
     def initialize(filename)
       @filename = filename
       # Note that this is probably a really bad idea for anything of any size
-      @stops = FasterCSV.read("/home/kaerast/data/Stops_extract.csv")
+      @stops = FasterCSV.read(filename)
     end
     
     def_delegators :@stops, :<<, :[], :[]=, :last
