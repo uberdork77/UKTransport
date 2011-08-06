@@ -14,9 +14,11 @@ module UKTransport
 	  datafile =  open(filename)
 	  datafile.readlines.each { |line|
 	    if ((line =~ /^QS/) == 0)
-	      @routes.push(line.scan(@@service_regex))
+	      route = line.scan(@@service_regex)
+	      @routes.push(route)
 	    elsif ((line =~ /^QL/) == 0)
-	      @stops.push(line.scan(@@location_regex))
+	      stop = line.scan(@@location_regex)
+	      @stops.push(stop)
 	    end
 	  }
 	end
