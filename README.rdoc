@@ -6,11 +6,15 @@ It uses local files and provides a Ruby interface for reading it.
 
 == Usage
 
-  x = UKTransport::.Naptan.new(filename) => array of bus stops (id, lat, long)
+  x = UKTransport::.Naptan.new(filename) => array of bus stops
   y = UKTransport::Cif.new(filename)
-  y.routes => array of bus routes (transaction type, operator, unique journey ID, first date, last date, MTWTF, School Term Time, Bank Holidays, Public Route Number, Running Board, Vehicle Type, Registration Number, Route Direction)
-  y.stops => array of bus stops (transaction type, id, name, gazetteer_code, point_type)
+  y.routes => array of bus route objects
+  y.stops => array of bus stop objects
 
 == Data formats
 
-The CIF data is better documented <a href="http://www.travelinedata.org.uk/CIF/atco-cif-spec.pdf">here</a>
+The CIF data is better documented at http://www.travelinedata.org.uk/CIF/atco-cif-spec.pdf
+
+Naptan data is returned in an array
+
+  "ATCOCode","GridType","Easting","Northing","Lon","Lat","CommonName","Identifier","Direction","Street","Landmark","NatGazID","NatGazLocality","ParentLocality","GrandParentLocality","Town","Suburb","StopType","BusStopType","BusRegistrationStatus","RecordStatus","Notes","LocalityCentre","SMSNumber","LastChanged"
