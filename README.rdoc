@@ -1,12 +1,10 @@
-UKTransport
-===========
+= UKTransport
 
 UKTransport is a Ruby gem for parsing Naptan CSV files and NPTD CIF files.
 
 It uses local files and provides a Ruby interface for reading it.
 
-Usage
-===
+== Usage
 
 uktransport.naptan(filename) => array of bus stops (id, lat, long)
 uktransport.nptd(filename)
