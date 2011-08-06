@@ -9,4 +9,13 @@ module UKTransport
     
     end
   end
+  
+  class Stop
+    @routes = []
+    attr_accessor :location, :name, :gazetteer, :point_type, :gazetteer_id
+  
+    def initialize
+  
+    end
+  end
 end

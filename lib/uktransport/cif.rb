@@ -30,8 +30,14 @@ module UKTransport
 	      route.direction = routeline[12]
 	      @routes.push(route)
 	    elsif ((line =~ /^QL/) == 0)
-	      stop = line.scan(@@location_regex)[0]
-	      @stops.push(:location => stop[1], :name => stop[2].strip, :gazetteer => stop[3], :point_type => stop[4], :gazetteer_id => stop[5])
+	      stopline = line.scan(@@location_regex)[0]
+	      stop = UKTransport::Stop.new
+	      stop.location = stopline[1]
+	      stop.name = stopline[2].strip
+	      stop.gazetteer = stopline[3]
+	      stop.point_type = stopline[4]
+	      stop.gazetteer_id = stopline[5]
+	      @stops.push(stop)
 	    end
 	  }
 	end
