@@ -14,8 +14,21 @@ module UKTransport
 	  datafile =  open(filename)
 	  datafile.readlines.each { |line|
 	    if ((line =~ /^QS/) == 0)
-	      route = line.scan(@@service_regex)[0]
-	      @routes.push(:operator => route[1].strip, :journey => route[2].strip, :start_date => route[3], :end_date => route[4], :weekdays => route[5], :school_holidays => route[6], :bankholidays => route[7], :route => route[8].strip, :running_board => route[9].strip, :vehicle_type => route[10].strip, :registration_number => route[11].strip, :direction => route[12])
+	      routeline = line.scan(@@service_regex)[0]
+	      route = UKTransport::Route.new
+	      route.operator = routeline[1].strip
+	      route.journey = routeline[2].strip
+	      route.start_date = routeline[3]
+	      route.end_date = routeline[4]
+	      route.weekdays = routeline[5]
+	      route.school_holidays = routeline[6]
+	      route.bankholidays = routeline[7]
+	      route.route = routeline[8].strip
+	      route.running_board = routeline[9].strip
+	      route.vehicle_type = routeline[10].strip
+	      route.registration_number = routeline[11].strip
+	      route.direction = routeline[12]
+	      @routes.push(route)
 	    elsif ((line =~ /^QL/) == 0)
 	      stop = line.scan(@@location_regex)[0]
 	      @stops.push(:location => stop[1], :name => stop[2].strip, :gazetteer => stop[3], :point_type => stop[4], :gazetteer_id => stop[5])
