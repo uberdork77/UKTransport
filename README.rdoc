@@ -8,5 +8,5 @@ It uses local files and provides a Ruby interface for reading it.
 
   x = UKTransport::.Naptan.new(filename) => array of bus stops (id, lat, long)
   y = UKTransport::Cif.new(filename)
-  y.routes => array of bus routes (id, name, stops(one, two, three))
+  y.routes => array of bus routes (transaction type, operator, unique journey ID, first date, last date, MTWTF, School Term Time, Bank Holidays, Public Route Number, Running Board, Vehicle Type, Registration Number, Route Direction)
   y.stops => array of bus stops (id, name, routes(one, two, three))
