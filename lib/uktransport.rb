@@ -9,6 +9,11 @@ module UKTransport
       @stops = []
     end
     
+    # Does nothing but is called by parsers as a way of providing a hook to save into a database
+    def save
+    
+    end
+    
   end
   
   class Stop
@@ -17,6 +22,11 @@ module UKTransport
   
     def initialize
       @routes = []
+    end
+    
+    # Does nothing but is called by parsers as a way of providing a hook to save into a database
+    def save
+    
     end
   end
 end

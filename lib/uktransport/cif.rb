@@ -29,11 +29,13 @@ module UKTransport
 	      route.vehicle_type = routeline[10].strip
 	      route.registration_number = routeline[11].strip
 	      route.direction = routeline[12]
+	      route.save
 	      @routes.push(route)
 	    elsif ((line =~ /^Q[OIT]/) == 0)
 	      stopline = line.scan(/^Q[OIT](.{12})/)[0]
 	      stop = UKTransport::Stop.new
 	      stop.location = stopline[0]
+	      stop.save
 	      @routes.last.stops.push stop
 	    elsif ((line =~ /^QL/) == 0)
 	      stopline = line.scan(@@location_regex)[0]
@@ -43,6 +45,7 @@ module UKTransport
 	      stop.gazetteer = stopline[3]
 	      stop.point_type = stopline[4]
 	      stop.gazetteer_id = stopline[5]
+	      stop.save
 	      @stops.push(stop)
 	    end
 	  }
